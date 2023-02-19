@@ -9,7 +9,7 @@ const requestLogger = (request, response, next) => {
     console.log('---')
     next()
 }
-
+app.use(express.static('dist'))
 const unknownEndPoint = (request, response) => {
     response.status(404).send({ error: 'unknwon endpoint' })
 }
@@ -85,7 +85,7 @@ app.delete('/api/notes/:id', (request, response) => {
 
 app.use(unknownEndPoint)
 
-const PORT = 3001
+const PORT = process.env.port || 3001
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
 })
