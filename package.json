@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.jsx",
   "scripts": {
-    "start": "node index.jsx",
-    "dev": "nodemon index.jsx",
-    "test": "echo \\\"Error: no test specified\\\" && exit 1",
+    "start": "cross-env NODE_ENV=production node index.jsx",
+    "dev": "cross-env NODE_ENV=development nodemon index.jsx",
     "build:ui": "shx rm -rf dist && cd ../vite-project && npm run build && cp -r dist ../notes-backend",
     "deploy:full": "shx npm run build:ui && git add . && git commit -m uibuild && git push",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "cross-env NODE_ENV=test jest --verbose --runInBand"
   },
   "author": "Richa Rao",
   "license": "ISC",
@@ -20,8 +20,15 @@
     "mongoose": "^6.9.2"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "eslint": "^8.34.0",
+    "jest": "^29.4.3",
     "nodemon": "^2.0.20",
-    "shx": "^0.3.4"
+    "shx": "^0.3.4",
+    "supertest": "^6.3.3"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "globalTeardown": "./tests/teardown.jsx"
   }
 }
