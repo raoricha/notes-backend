@@ -1,7 +1,21 @@
 POST http://localhost:3001/api/notes
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5c2VybmFtZSI6Im1sdXVra2FpIiwiaW
 
 {
-    "content": "Ensure that everything still works",
-    "important": true
+   "content": "Single Page Apps use token authorization",
+   "important": true 
 }
+
+# {
+#     "content": "User id of the note creator is at the start sent along the client",
+#     "important": true,
+#     "userId": "63f91808e9382b10739c1b31"
+# }
+
+# {
+#     "username": "raya",
+#     "name": "Rooklyn",
+#     "password": "kristen"
+# }
+
